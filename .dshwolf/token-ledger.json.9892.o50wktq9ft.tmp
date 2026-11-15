@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "lifetime": {
+    "total_sessions": 1
+  },
+  "sessions": [
+    {
+      "session_id": "session-0c03985f-1e69-43fd-908f-32b5ddaaaf8b",
+      "agent": "deepseek-flash",
+      "measured_tokens": 555527,
+      "at": "2026-11-14T15:02:05.982Z"
+    }
+  ]
+}

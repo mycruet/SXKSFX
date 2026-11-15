@@ -1,0 +1,804 @@
+{
+  "session_id": "",
+  "started": "",
+  "files_read": {
+    "C:/Users/Administrator/.dsh/storages/workspace.json": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:37:37.037Z"
+    },
+    "C:/Users/Administrator/.dsh/storages/session_projcache/sessions/session-0c03985f-1e69-43fd-908f-32b5ddaaaf8b.json": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:37:43.994Z"
+    },
+    "C:/Users/Administrator/.dsh/profiles/desktop/node_modules/dsh-publish-github/README.zh.md": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:37:49.318Z"
+    },
+    "C:/Users/Administrator/.dsh/profiles/desktop/node_modules/dsh-publish-github/index.js": {
+      "count": 2,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:37:49.324Z"
+    },
+    "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html": {
+      "count": 78,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:37:58.042Z"
+    },
+    "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md": {
+      "count": 7,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:54:16.027Z"
+    },
+    "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md": {
+      "count": 6,
+      "tokens": 0,
+      "first_read": "2026-11-14T12:54:36.845Z"
+    }
+  },
+  "files_written": [
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:49:02.723Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:49:24.335Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:49:40.697Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:49:52.520Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:50:02.775Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:50:17.848Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:50:28.564Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:50:42.796Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:50:58.179Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:51:13.792Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:51:29.362Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:51:46.719Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:51:52.820Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:52:09.174Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:52:22.593Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:52:31.647Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:52:39.861Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:52:48.579Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:52:58.442Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T12:53:11.966Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T12:53:35.729Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T12:53:46.275Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T12:53:56.735Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T12:54:05.293Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T12:54:13.780Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T12:54:41.057Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:13:41.127Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:13:42.545Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:13:55.748Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:13:59.759Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:02.384Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:06.383Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:07.926Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:09.489Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:11.300Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:12.985Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:14.613Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:16.087Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:26.904Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:28.820Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:30.751Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:32.590Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:34.471Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:36.198Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:37.916Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:40.617Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:47.943Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:49.988Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:52.408Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:54.644Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:14:57.447Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:00.152Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:02.905Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:05.458Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:07.556Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:09.969Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:11.950Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:17.254Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:19.454Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:21.745Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:24.232Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T13:15:58.883Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T13:16:03.341Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T13:16:06.052Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T13:16:08.082Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T13:16:09.685Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T13:16:12.885Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T13:16:32.259Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T13:16:35.314Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:43:52.646Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:43:56.038Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:43:59.707Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:04.305Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:07.615Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:10.392Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:13.531Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:19.901Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:22.147Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:25.845Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:29.792Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:44.239Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:44:59.617Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:07.516Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:20.745Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:24.760Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:41.456Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:47.901Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:51.301Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:53.300Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:45:55.415Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:38.096Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:41.174Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:46.765Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:51.118Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:53.479Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:56.172Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:46:59.297Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:47:02.241Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T14:47:18.404Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:47:25.485Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:47:27.839Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T14:47:39.517Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T14:49:25.802Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:03.227Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:11.342Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:14.871Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:22.073Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:26.833Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:29.682Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:32.964Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:35.781Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:41.166Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:43.762Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:47.180Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:02:51.066Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:03:04.055Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:03:09.924Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:03:11.974Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:03:14.451Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:34.025Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:37.173Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:39.333Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:45.042Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:48.541Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:51.527Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:54.612Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:03:56.915Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:04:15.575Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:19:48.225Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:19:51.836Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:19:55.260Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:02.536Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:07.564Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:12.548Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:14.846Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:22.275Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:25.241Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:28.773Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:35.207Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:42.286Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:45.401Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:47.899Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:20:49.918Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:05.468Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:08.502Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:11.587Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:14.214Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:17.143Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:20.261Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:23.049Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:28.149Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:21:30.710Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:21:47.822Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:22:00.218Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:22:03.722Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:30:38.262Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:30:49.058Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:30:51.710Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:30:55.057Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:31:02.457Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:31:04.962Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:31:10.951Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:31:13.494Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:31:22.048Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:31:26.243Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:36:00.561Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:36:07.194Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:36:13.168Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:46:05.102Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:46:08.333Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:46:15.460Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:46:18.007Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:46:21.210Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:46:27.405Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:46:29.906Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:52:48.743Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:52:53.121Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:52:56.804Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:53:04.351Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:53:06.717Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:53:09.883Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:53:22.012Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html",
+      "at": "2026-11-14T15:53:24.426Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:53:37.494Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:53:40.076Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:53:42.598Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md",
+      "at": "2026-11-14T15:53:49.318Z"
+    },
+    {
+      "file": "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md",
+      "at": "2026-11-14T15:54:04.109Z"
+    }
+  ],
+  "edit_counts": {
+    "D:/DeepSeek Harness/Projects/数学考试分析应用/index.html": 125,
+    "D:/DeepSeek Harness/Projects/数学考试分析应用/需求文档.md": 50,
+    "D:/DeepSeek Harness/Projects/数学考试分析应用/.dshwolf/STATUS.md": 13
+  },
+  "anatomy_hits": 0,
+  "anatomy_misses": 7,
+  "repeated_reads_warned": 89,
+  "cerebrum_warnings": 0
+}
