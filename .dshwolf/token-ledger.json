@@ -7,8 +7,8 @@
     {
       "session_id": "session-0c03985f-1e69-43fd-908f-32b5ddaaaf8b",
       "agent": "deepseek-flash",
-      "measured_tokens": 653219,
-      "at": "2026-11-14T15:54:14.014Z"
+      "measured_tokens": 429384,
+      "at": "2026-11-15T15:26:30.034Z"
     }
   ]
 }

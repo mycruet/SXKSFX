@@ -84,6 +84,12 @@ main{padding:20px 24px 60px;max-width:1440px;margin:0 auto}
 .chart{width:100%;height:280px}
 /* 溢出内容等比缩放容器（PPT 截图防截断） */
 .fit-inner { width: 100%; transform-origin: top left; }
+/* 上图下文页：图像区域高度运行时按“图片比例 + 文字高度”动态分配，图片等比缩放不变形 */
+.vsplit { min-height: 0; }
+.vsplit-img { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.vsplit-img img { width: 100%; flex: 1 1 auto; min-height: 0; object-fit: contain; display: block; }
+.vsplit-img .chart-cap { flex: 0 0 auto; }
+.vsplit-text { min-height: 0; }
 
 /* 富文本编辑区 */
 .rich-editor-wrap { position: relative; margin-top: 10px; }
@@ -135,6 +141,14 @@ main{padding:20px 24px 60px;max-width:1440px;margin:0 auto}
 .s-dark-card .content p { margin: 0 0 12px; }
 .s-dark-card .content b { color: #D4A35A; }
 .s-split { display: flex; gap: 24px; flex: 1; min-height: 0; }
+/* 内容页双栏槽位：按页配置可切换「左图右文 / 上图下文」 */
+.slot-a { flex: 1.2; min-width: 0; min-height: 0; overflow: hidden; background: #fff; border: 1px solid #E5E0D8; border-radius: 6px; padding: 16px; }
+.slot-b { flex: 0.8; display: flex; flex-direction: column; min-height: 0; }
+.slot-b > .s-dark-card { flex: 1; min-height: 0; }
+.vsplit .slot-a { flex: 0 0 auto; }
+.vsplit .slot-b { flex: 1 1 auto; }
+.img-center { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.img-center img { margin: 0; }
 .s-left { flex: 1.2; background: #fff; border-radius: 6px; border: 1px solid #E5E0D8; padding: 16px; display: flex; flex-direction: column; min-height: 0; }
 .s-right { flex: 0.8; display: flex; flex-direction: column; min-height: 0; }
 .chart-img { width: 100%; height: 310px; object-fit: contain; }
@@ -175,10 +189,12 @@ main{padding:20px 24px 60px;max-width:1440px;margin:0 auto}
 .form-group input { padding: 10px 12px; border: 1px solid #dbe2f0; border-radius: 8px; font-size: 13.5px; outline: none; }
 .form-group input:focus { border-color: #4f7cff; box-shadow: 0 0 0 3px rgba(79,124,255,.1); }
 .ppt-font-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
-.ppt-font-table th { background: #f7f9ff; color: #38456b; font-weight: 600; padding: 8px 12px; text-align: left; border-bottom: 1px solid #e3e8f2; }
-.ppt-font-table td { padding: 8px 12px; border-bottom: 1px solid #f0f3fa; }
-.ppt-font-table input { width: 70px; padding: 5px 8px; border: 1px solid #dbe2f0; border-radius: 6px; outline: none; text-align: center; }
+.ppt-font-table th { background: #f7f9ff; color: #38456b; font-weight: 600; padding: 8px 8px; text-align: left; border-bottom: 1px solid #e3e8f2; white-space: nowrap; }
+.ppt-font-table td { padding: 8px 8px; border-bottom: 1px solid #f0f3fa; white-space: nowrap; }
+.ppt-font-table input { width: 62px; padding: 5px 6px; border: 1px solid #dbe2f0; border-radius: 6px; outline: none; text-align: center; }
 .ppt-font-table input:focus { border-color: #4f7cff; }
+.ppt-font-table select { padding: 5px 6px; border: 1px solid #dbe2f0; border-radius: 6px; outline: none; background: #fff; font-size: 12px; }
+.ppt-font-table select:focus { border-color: #4f7cff; }
 /* 临界生分析：一个分数段一张表格，同班学生「班级」单元格纵向合并 */
 .crit-seg { margin-bottom: 22px; }
 .crit-seg:last-child { margin-bottom: 0; }
@@ -223,6 +239,24 @@ main{padding:20px 24px 60px;max-width:1440px;margin:0 auto}
 .crit-table.compact td.crit-class { font-size: 11px; }
 .crit-table.compact td.crit-class span { font-size: 10px; }
 .crit-table.compact tr.crit-trunc td { font-size: 10px; }
+/* 可编辑 PPT / 图片版 PPT 截图放大：让临界生表格/卡片的字号更大，尽量填满内容区 */
+.cap-scale .crit-table.compact { font-size: 16px; }
+.cap-scale .crit-table.compact th { font-size: 14px; padding: 8px 10px; }
+.cap-scale .crit-table.compact td { padding: 7px 10px; }
+.cap-scale .crit-table.compact td.crit-class { font-size: 16px; }
+.cap-scale .crit-table.compact td.crit-class span { font-size: 13px; }
+.cap-scale .crit-table.compact tr.crit-trunc td { font-size: 13px; }
+.cap-scale .crit-seg-head { font-size: 16px; }
+.cap-scale .crit-card-title { font-size: 16px; }
+.cap-scale .crit-card-num { font-size: 13px; padding: 1px 8px; }
+.cap-scale .crit-card-names { font-size: 15px; line-height: 1.9; }
+/* 覆盖紧凑卡片的字号（compact 选择器优先级更高） */
+.cap-scale .crit-cards.compact { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.cap-scale .crit-cards.compact .crit-card { padding: 10px 12px; }
+.cap-scale .crit-cards.compact .crit-card-title { font-size: 16px; margin-bottom: 6px; }
+.cap-scale .crit-cards.compact .crit-card-num { font-size: 13px; padding: 1px 8px; }
+.cap-scale .crit-cards.compact .crit-card-names { font-size: 15px; line-height: 1.9; }
+.cap-scale .chart-cap { font-size: 12px; }
 </style>
 </head>
 <body>
@@ -385,19 +419,22 @@ main{padding:20px 24px 60px;max-width:1440px;margin:0 auto}
     </div>
 
     <div class="panel">
-      <div class="panel-title">PPT 各页分析内容字体大小设置</div>
-      <div class="hint" style="margin-top:-6px">可单独设置每一页的“页面大标题”和“分析正文”字号。</div>
-      <table class="ppt-font-table" id="pptFontTable">
-        <thead><tr><th>页面</th><th>页面大标题字号</th><th>分析正文字号</th></tr></thead>
-        <tbody></tbody>
-      </table>
+      <div class="panel-title">PPT 内容页设置（字号 / 行距 / 边距 / 布局）</div>
+      <div class="hint" style="margin-top:-6px">逐页设置：页面大标题字号、分析正文字号、内容标题（如「数据分析」）字号、标题与正文间距(px)、正文行距(px)、文字与上下边的边距(px)、页面布局；上图下文页还可设「上图 : 下文」比例（默认 6 : 4）。封面、目录、结束页无分析内容，相关项显示「—」。</div>
+      <div style="overflow-x:auto;">
+        <table class="ppt-font-table" id="pptFontTable">
+          <thead><tr><th>页面</th><th>页面大标题字号</th><th>分析正文字号</th><th>内容标题字号</th><th>标题与正文间距(px)</th><th>正文行距(px)</th><th>上下边距(px)</th><th>页面布局</th><th>上图 : 下文</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
 
     <div class="toolbar">
       <button class="btn primary" id="btnGenerate">📥 生成报告并下载（PDF + PPT）</button>
       <button class="btn" id="btnPPTOnly">📊 仅下载 PPT</button>
+      <button class="btn" id="btnEditablePPT">🎨 生成可编辑 PPT（PPTX）</button>
     </div>
-    <div class="hint">💡 生成完成后会尝试自动下载；若浏览器拦截了自动下载，请在预览上方点击「保存 PDF / 保存 PPT」（可重复保存）。</div>
+    <div class="hint">💡 生成完成后会尝试自动下载；若浏览器拦截了自动下载，请在预览上方点击「保存 PDF / 保存 PPT」（可重复保存）。修改「报告信息」或「PPT 内容页设置」后，系统会检测到并自动重新生成报告。「生成可编辑 PPT」导出原生文字版：页面标题、内容标题与分析正文均可在 PowerPoint 中直接编辑。</div>
     <div id="reportWrap">
       <div class="report-empty">请先完成「数据分析」，再填写上方信息并点击生成报告</div>
     </div>
@@ -449,20 +486,24 @@ const state = {
   analysis: null,
   texts: {},
   pptPages: [
-    { key: 'cover',  name: '封面', title: 56, body: 18 },
-    { key: 'toc',    name: '目录', title: 40, body: 22 },
-    { key: 'overview', name: '学科总体分析', title: 40, body: 16 },
-    { key: 'yoy',    name: '同比分析', title: 40, body: 16 },
-    { key: 'rate',   name: '比率分析', title: 40, body: 16 },
-    { key: 'avg',    name: '平均分分析', title: 40, body: 16 },
-    { key: 'dist',   name: '成绩分布', title: 40, body: 16 },
-    { key: 'seg_class', name: '各班分布', title: 40, body: 16 },
-    { key: 'critical', name: '临界生分析', title: 40, body: 16 },
-    { key: 'type',   name: '大题分析', title: 40, body: 16 },
-    { key: 'question', name: '小题分析', title: 40, body: 16 },
-    { key: 'summary', name: '总结', title: 40, body: 16 },
-    { key: 'end',    name: '结束页', title: 48, body: 18 }
-  ]
+    { key: 'cover',  name: '封面', title: 56, body: 18, ctitle: 18, lh: 31, padY: 18, labGap: 16 },
+    { key: 'toc',    name: '目录', title: 40, body: 22, ctitle: 18, lh: 37, padY: 18, labGap: 16 },
+    { key: 'overview', name: '学科总体分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'yoy',    name: '同比分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'rate',   name: '比率分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'avg',    name: '平均分分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'dist',   name: '成绩分布', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'seg_class', name: '各班分布', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'critical', name: '临界生分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'type',   name: '大题分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'question', name: '小题分析', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'summary', name: '总结', title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 },
+    { key: 'end',    name: '结束页', title: 48, body: 18, ctitle: 18, lh: 31, padY: 18, labGap: 16 }
+  ],
+  /* PPT 内容页布局：h = 左图右文，v = 上图下文（每页可单独设置） */
+  pptLayout: { overview: 'h', yoy: 'v', rate: 'h', avg: 'h', dist: 'h', seg_class: 'h', critical: 'h', type: 'h', question: 'v' },
+  /* 上图下文页：上图占比（百分比，20–80），其余为下文；每页可单独设置 */
+  pptVSplit: { overview: 60, yoy: 60, rate: 60, avg: 60, dist: 60, seg_class: 60, critical: 60, type: 60, question: 60 }
 };
 
 const LINE_KEYS = ['full', 'excellent', 'good', 'pass', 'low'];
@@ -559,6 +600,7 @@ function downloadBlob(blob, filename){
  * ------------------------------------------------------------ */
 let reportFileURLs = [];
 let lastReport = null;
+let reportStale = false;
 
 function releaseReportFileURLs(){
   reportFileURLs.forEach(url => { try { URL.revokeObjectURL(url); } catch(e){} });
@@ -580,7 +622,13 @@ function buildDownloadBar(fileName, opts){
 }
 function reportMetaSignature(){
   const v = id => { const el = $(id); return el ? el.value.trim() : ''; };
-  return [v('#metaTitle'), v('#metaSubTitle'), v('#metaAuthor'), JSON.stringify(state.pptPages), JSON.stringify(state.texts)].join('|');
+  return [v('#metaTitle'), v('#metaSubTitle'), v('#metaAuthor'), JSON.stringify(state.pptPages), JSON.stringify(state.pptLayout || {}), JSON.stringify(state.pptVSplit || {}), JSON.stringify(state.texts)].join('|');
+}
+/* 报告信息 / PPT 内容页设置变更后标记报告为过期，下次生成必须重新渲染 */
+function invalidateReportCache(msg){
+  if (!lastReport || reportStale) return;
+  reportStale = true;
+  if (msg) toast(msg);
 }
 
 function parseRate(str){
@@ -861,11 +909,40 @@ function renderIndicatorsConfig(){
   box.querySelectorAll('.ind-chk').forEach(chk => chk.addEventListener('change', () => { state.settings.indicators[chk.value] = chk.checked; }));
 }
 
+/* 可设置内容页布局的页面（封面/目录/结束页除外；总结页只有单栏） */
+const PPT_LAYOUT_PAGES = ['overview', 'yoy', 'rate', 'avg', 'dist', 'seg_class', 'critical', 'type', 'question'];
+/* 有「分析内容」文本卡的页面：可设置内容标题字号、正文行距、上下边距 */
+const PPT_TEXT_PAGES = ['overview', 'yoy', 'rate', 'avg', 'dist', 'seg_class', 'critical', 'type', 'question', 'summary'];
+/* 上图下文页可选的「上图 : 下文」高度比例 */
+const PPT_VSPLIT_OPTIONS = [[30, '3 : 7'], [40, '4 : 6'], [50, '5 : 5'], [60, '6 : 4'], [70, '7 : 3'], [80, '8 : 2'], [90, '9 : 1']];
+
 function renderPptFontConfig() {
   const tbody = $('#pptFontTable tbody');
-  tbody.innerHTML = state.pptPages.map(p => `<tr><td>${p.name}</td><td><input type="number" class="ppt-title-size" data-key="${p.key}" value="${p.title}" min="10" max="80"></td><td><input type="number" class="ppt-body-size" data-key="${p.key}" value="${p.body}" min="10" max="40"></td></tr>`).join('');
-  tbody.querySelectorAll('.ppt-title-size').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.title = parseInt(inp.value) || page.title; }));
-  tbody.querySelectorAll('.ppt-body-size').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.body = parseInt(inp.value) || page.body; }));
+  tbody.innerHTML = state.pptPages.map(p => {
+    const canLayout = PPT_LAYOUT_PAGES.includes(p.key);
+    const isText = PPT_TEXT_PAGES.includes(p.key);
+    const layout = (state.pptLayout && state.pptLayout[p.key]) || 'h';
+    const layoutCell = canLayout
+      ? `<select class="ppt-layout" data-key="${p.key}"><option value="h" ${layout === 'h' ? 'selected' : ''}>左图右文</option><option value="v" ${layout === 'v' ? 'selected' : ''}>上图下文</option></select>`
+      : '<span class="muted">—</span>';
+    const vsplit = Number((state.pptVSplit && state.pptVSplit[p.key]) || 60);
+    const vCell = canLayout
+      ? `<select class="ppt-vsplit" data-key="${p.key}" title="仅「上图下文」布局生效">${PPT_VSPLIT_OPTIONS.map(([v, label]) => `<option value="${v}" ${vsplit === v ? 'selected' : ''}>${label}</option>`).join('')}</select>`
+      : '<span class="muted">—</span>';
+    const ctitleCell = isText ? `<input type="number" class="ppt-ctitle-size" data-key="${p.key}" value="${p.ctitle ?? 18}" min="8" max="60">` : '<span class="muted">—</span>';
+    const labGapCell = isText ? `<input type="number" class="ppt-lab-gap" data-key="${p.key}" value="${p.labGap ?? 16}" min="0" max="60">` : '<span class="muted">—</span>';
+    const lhCell = isText ? `<input type="number" step="1" class="ppt-lh" data-key="${p.key}" value="${p.lh ?? 27}" min="12" max="80">` : '<span class="muted">—</span>';
+    const padCell = isText ? `<input type="number" class="ppt-pad-y" data-key="${p.key}" value="${p.padY ?? 18}" min="0" max="60">` : '<span class="muted">—</span>';
+    return `<tr><td>${p.name}</td><td><input type="number" class="ppt-title-size" data-key="${p.key}" value="${p.title}" min="10" max="80"></td><td><input type="number" class="ppt-body-size" data-key="${p.key}" value="${p.body}" min="10" max="40"></td><td>${ctitleCell}</td><td>${labGapCell}</td><td>${lhCell}</td><td>${padCell}</td><td>${layoutCell}</td><td>${vCell}</td></tr>`;
+  }).join('');
+  tbody.querySelectorAll('.ppt-title-size').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.title = parseInt(inp.value) || page.title; markDirty(); }));
+  tbody.querySelectorAll('.ppt-body-size').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.body = parseInt(inp.value) || page.body; markDirty(); }));
+  tbody.querySelectorAll('.ppt-ctitle-size').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.ctitle = parseInt(inp.value) || page.ctitle; markDirty(); }));
+  tbody.querySelectorAll('.ppt-lab-gap').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.labGap = parseInt(inp.value) || 0; markDirty(); }));
+  tbody.querySelectorAll('.ppt-lh').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.lh = parseInt(inp.value) || page.lh; markDirty(); }));
+  tbody.querySelectorAll('.ppt-pad-y').forEach(inp => inp.addEventListener('change', () => { const page = state.pptPages.find(x => x.key === inp.dataset.key); if (page) page.padY = parseInt(inp.value) || 0; markDirty(); }));
+  tbody.querySelectorAll('.ppt-layout').forEach(sel => sel.addEventListener('change', () => { state.pptLayout[sel.dataset.key] = sel.value; markDirty(); }));
+  tbody.querySelectorAll('.ppt-vsplit').forEach(sel => sel.addEventListener('change', () => { state.pptVSplit[sel.dataset.key] = Number(sel.value); markDirty(); }));
 }
 
 /* ============================================================
@@ -1084,8 +1161,8 @@ function renderAnalysisView(a){
   out.appendChild(buildSection('四、总结', [{ type:'rich-text', key:'summary', toolbar: toolbarHtml }]));
 
   out.querySelectorAll('.editable[data-key]').forEach(el => {
-    el.addEventListener('input', () => { state.texts[el.dataset.key] = el.innerHTML; });
-    el.addEventListener('blur', () => { state.texts[el.dataset.key] = el.innerHTML; });
+    el.addEventListener('input', () => { state.texts[el.dataset.key] = el.innerHTML; markDirty(); });
+    el.addEventListener('blur', () => { state.texts[el.dataset.key] = el.innerHTML; markDirty(); });
   });
 
   setTimeout(() => {
@@ -1302,17 +1379,37 @@ async function renderChartToDataURL(option, width, height){
   chart.setOption({...option, animation:false});
   await new Promise(r => { requestAnimationFrame(() => requestAnimationFrame(r)); setTimeout(r, 100); });
   let url = '';
-  try { url = chart.getDataURL({type:'jpeg', pixelRatio:2, backgroundColor:'#fff'}); } catch(e){}
+  try { url = chart.getDataURL({type:'png', pixelRatio:3, backgroundColor:'#fff'}); } catch(e){}
   chart.dispose(); document.body.removeChild(div); return url;
+}
+
+/* 图表在 PPT 中的目标宽高比：与所在槽位一致，图片即可尽量填满容器、减少留白（等比不变形） */
+function chartPageAspect(key){
+  const AVAIL_H = 538;                       // 标题下方内容区估计高度
+  const isV = (state.pptLayout && state.pptLayout[key]) === 'v';
+  if (isV){
+    const pct = Math.min(90, Math.max(20, Number((state.pptVSplit && state.pptVSplit[key]) ?? 60)));
+    const topH = Math.max(120, Math.round((AVAIL_H - 12) * pct / 100));
+    const w = 1152 - 34;                     // 槽位内容宽（含左右内边距与边框）
+    const h = Math.max(100, topH - 34 - 25); // 减去内边距与图注
+    return w / h;
+  }
+  const w = Math.round((1152 - 24) * 0.6) - 34;
+  const h = Math.max(120, AVAIL_H - 34 - 25);
+  return w / h;
+}
+function chartRenderSize(aspect){
+  const w = 1200;
+  let h = Math.round(w / Math.max(0.9, Math.min(4.5, aspect)));
+  h = Math.max(240, Math.min(1100, h));
+  return { w, h };
 }
 
 async function prepareChartImages(a){
   const opts = chartOptions(a); const imgs = {};
+  const pageOf = { chart_rate: 'rate', chart_avg: 'avg', chart_dist: 'dist', chart_seg_class: 'seg_class', chart_type: 'type', chart_q: 'question' };
   for (const [id, opt] of Object.entries(opts)){
-    let w = 600, h = 320;
-    if (id === 'chart_dist') { w = 700; h = 320; }
-    if (id === 'chart_q') { w = 700; h = 220; }
-    if (id === 'chart_seg_class') { w = 600; h = 350; }
+    const { w, h } = chartRenderSize(chartPageAspect(pageOf[id] || ''));
     imgs[id] = await renderChartToDataURL(opt, w, h);
   }
   return imgs;
@@ -1591,9 +1688,30 @@ function pptxOverallCards(a){
 /* ============================================================
  *  构建 PPT HTML
  * ============================================================ */
+/* PPT 内容页：数据分析文本卡（内容标题/正文/行距/上下边距均取该页设置） */
+function pptTextBlock(html, noFit, label){
+  return `<div class="s-dark-card" style="padding-top: var(--ppt-pad-y, 18px); padding-bottom: var(--ppt-pad-y, 18px);"><div class="lab" style="font-size: var(--ppt-ctitle-size, 18px); margin-bottom: var(--ppt-lab-gap, 16px);">${label || '数据分析'}</div><div class="content"${noFit ? ' data-no-fit="1"' : ''} style="font-size: var(--ppt-body-size, 15px); line-height: var(--ppt-lh, 27px); overflow: hidden; padding-top: 3px;">${html}</div></div>`;
+}
+/* PPT 内容页双栏：按页面配置选择左图右文（h）或上图下文（v），每页独立生效 */
+function pptSplit(key, topHtml, textHtml){
+  const layout = (state.pptLayout && state.pptLayout[key]) === 'v' ? 'v' : 'h';
+  const text = pptTextBlock(textHtml, layout === 'v');
+  const top = /<img/i.test(topHtml) ? `<div class="img-center">${topHtml}</div>` : topHtml;
+  if (layout === 'v'){
+    return `<div class="s-split vsplit" style="flex-direction: column; gap: 12px;" data-vsplit data-vsplit-key="${key}">
+            <div class="slot-a vsplit-a">${top}</div>
+            <div class="slot-b vsplit-text">${text}</div>
+        </div>`;
+  }
+  return `<div class="s-split">
+            <div class="slot-a">${top}</div>
+            <div class="slot-b">${text}</div>
+        </div>`;
+}
+
 function buildSlideHTML(a, imgs, meta) {
   let current = 0;
-  const getFont = (key) => { const p = state.pptPages.find(x => x.key === key) || { title: 40, body: 16 }; return `--ppt-title-size: ${p.title}px; --ppt-body-size: ${p.body}px;`; };
+  const getFont = (key) => { const p = state.pptPages.find(x => x.key === key) || { title: 40, body: 16, ctitle: 18, lh: 27, padY: 18, labGap: 16 }; return `--ppt-title-size: ${p.title}px; --ppt-body-size: ${p.body}px; --ppt-ctitle-size: ${p.ctitle ?? 18}px; --ppt-lh: ${p.lh ?? 27}px; --ppt-pad-y: ${p.padY ?? 18}px; --ppt-lab-gap: ${p.labGap ?? 16}px;`; };
   let slides = [];
 
   // 封面（主标题、副标题、英文标签、编制人、右下装饰图）
@@ -1625,32 +1743,16 @@ function buildSlideHTML(a, imgs, meta) {
   // 总体分析
   current++; slides.push(`
   <div class="slide slide-content" style="${getFont('overview')}">
-      
       <div class="s-title"><div class="en">EXECUTIVE OVERVIEW</div><h2>学科总体分析</h2></div>
-      <div class="s-split">
-          <div class="s-left" style="display: flex; flex-direction: column;">
-              ${pptxOverallCards(a)}
-          </div>
-          <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.overview}</div></div>
-      </div>
+      ${pptSplit('overview', pptxOverallCards(a), state.texts.overview)}
   </div>`);
 
-  // 成绩分析 - 同比（表格行少，分析在下侧）
+  // 成绩分析 - 同比
   if (a.indicators.yoy) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('yoy')}">
-        
         <div class="s-title"><div class="en">YEAR-ON-YEAR ANALYSIS</div><h2>成绩分析 · 同比</h2></div>
-        <div style="display: flex; flex-direction: column; gap: 20px; flex: 1; min-height: 0;">
-            <div style="background: #fff; border-radius: 6px; border: 1px solid #E5E0D8; padding: 20px; flex-shrink: 0;">
-                ${buildYoyTable(a).replace('class="res-table"', 'class="res-table" style="font-size:16px; line-height: 2.5;"')}
-            </div>
-            <div class="s-dark-card" style="flex: 1; min-height: 0;">
-                <div class="lab">数据分析</div>
-                <div class="content">${state.texts.yoy}</div>
-            </div>
-        </div>
-        
+        ${pptSplit('yoy', buildYoyTable(a).replace('class="res-table"', 'class="res-table" style="font-size:16px; line-height: 2.5;"'), state.texts.yoy)}
     </div>`);
   }
 
@@ -1658,12 +1760,8 @@ function buildSlideHTML(a, imgs, meta) {
   if (a.indicators.rate && imgs.chart_rate) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('rate')}">
-        
         <div class="s-title"><div class="en">RATE ANALYSIS</div><h2>成绩分析 · 比率</h2></div>
-        <div class="s-split">
-            <div class="s-left"><img src="${imgs.chart_rate}" class="chart-img" /><div class="chart-cap">各班比率指标对比（虚线为学科总体）</div></div>
-            <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.rate}</div></div>
-        </div>
+        ${pptSplit('rate', `<img src="${imgs.chart_rate}" class="chart-img" /><div class="chart-cap">各班比率指标对比（虚线为学科总体）</div>`, state.texts.rate)}
     </div>`);
   }
 
@@ -1671,12 +1769,8 @@ function buildSlideHTML(a, imgs, meta) {
   if (a.indicators.avg) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('avg')}">
-        
         <div class="s-title"><div class="en">AVERAGE ANALYSIS</div><h2>成绩分析 · 平均分</h2></div>
-        <div class="s-split">
-            <div class="s-left"><img src="${imgs.chart_avg}" class="chart-img" /><div class="chart-cap">各班平均分与全体平均分偏离情况</div></div>
-            <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.avg}</div></div>
-        </div>
+        ${pptSplit('avg', `<img src="${imgs.chart_avg}" class="chart-img" /><div class="chart-cap">各班平均分与全体平均分偏离情况</div>`, state.texts.avg)}
     </div>`);
   }
 
@@ -1684,12 +1778,8 @@ function buildSlideHTML(a, imgs, meta) {
   if (a.indicators.segment) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('dist')}">
-        
         <div class="s-title"><div class="en">DISTRIBUTION ANALYSIS</div><h2>成绩分析 · 分布</h2></div>
-        <div class="s-split">
-            <div class="s-left"><img src="${imgs.chart_dist}" class="chart-img" /><div class="chart-cap">分数段人数分布</div></div>
-            <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.segment}</div></div>
-        </div>
+        ${pptSplit('dist', `<img src="${imgs.chart_dist}" class="chart-img" /><div class="chart-cap">分数段人数分布</div>`, state.texts.segment)}
     </div>`);
   }
 
@@ -1697,29 +1787,18 @@ function buildSlideHTML(a, imgs, meta) {
   if (a.indicators.segment) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('seg_class')}">
-        
         <div class="s-title"><div class="en">CLASS DISTRIBUTION</div><h2>成绩分析 · 各班分布</h2></div>
-        <div class="s-split">
-            <div class="s-left"><img src="${imgs.chart_seg_class}" class="chart-img" /><div class="chart-cap">各班各分数段人数分布（堆叠直方图）</div></div>
-            <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.seg_class}</div></div>
-        </div>
+        ${pptSplit('seg_class', `<img src="${imgs.chart_seg_class}" class="chart-img" /><div class="chart-cap">各班各分数段人数分布（堆叠直方图）</div>`, state.texts.seg_class)}
     </div>`);
   }
 
-  // 成绩分析 - 临界生（表格行多列少，分析在右侧）
+  // 成绩分析 - 临界生
   if (a.indicators.critical) {
-    const critHtml = buildCriticalTables(a, { compact: true });
-
+    const critHtml = `<div class="cap-scale">${buildCriticalTables(a, { compact: true })}</div>`;
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('critical')}">
-        
         <div class="s-title"><div class="en">CRITICAL STUDENTS ANALYSIS</div><h2>成绩分析 · 临界生</h2></div>
-        <div class="s-split">
-            <div class="s-left">
-                <div style="flex: 1; min-height: 0; overflow-y: auto;">${critHtml}</div>
-            </div>
-            <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.critical}</div></div>
-        </div>
+        ${pptSplit('critical', critHtml, state.texts.critical)}
     </div>`);
   }
 
@@ -1727,12 +1806,8 @@ function buildSlideHTML(a, imgs, meta) {
   if (a.typeRates.length) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('type')}">
-        
         <div class="s-title"><div class="en">QUESTION TYPE ANALYSIS</div><h2>试卷分析 · 大题</h2></div>
-        <div class="s-split">
-            <div class="s-left"><img src="${imgs.chart_type}" class="chart-img" /><div class="chart-cap">各题型得分率对比</div></div>
-            <div class="s-right s-dark-card"><div class="lab">数据分析</div><div class="content">${state.texts.type}</div></div>
-        </div>
+        ${pptSplit('type', `<img src="${imgs.chart_type}" class="chart-img" /><div class="chart-cap">各题型得分率对比</div>`, state.texts.type)}
     </div>`);
   }
 
@@ -1740,18 +1815,8 @@ function buildSlideHTML(a, imgs, meta) {
   if (a.questionRates.length) {
     current++; slides.push(`
     <div class="slide slide-content" style="${getFont('question')}">
-        
         <div class="s-title"><div class="en">QUESTION ANALYSIS</div><h2>试卷分析 · 小题</h2></div>
-        <div class="s-split" style="flex-direction: column;">
-            <div class="s-left" style="flex: 0 0 200px; border: none; padding: 0; background: transparent;">
-                <img src="${imgs.chart_q}" class="chart-img" style="height: 100%;" />
-                <div class="chart-cap" style="margin-top: 4px;">各题得分率分布</div>
-            </div>
-            <div class="s-dark-card" style="flex: 1; margin-top: 8px; padding: 18px 24px;">
-                <div class="lab" style="margin-bottom: 10px;">数据分析</div>
-                <div class="content" style="font-size: var(--ppt-body-size, 15px); line-height: 1.7; overflow: hidden;">${state.texts.q}</div>
-            </div>
-        </div>
+        ${pptSplit('question', `<img src="${imgs.chart_q}" class="chart-img" /><div class="chart-cap">各题得分率分布</div>`, state.texts.q)}
     </div>`);
   }
 
@@ -1760,7 +1825,7 @@ function buildSlideHTML(a, imgs, meta) {
   <div class="slide slide-content" style="${getFont('summary')}">
       
       <div class="s-title"><div class="en">SUMMARY</div><h2>总结</h2></div>
-      <div class="s-dark-card" style="flex: 1;"><div class="lab">整体评价与教学建议</div><div class="content">${state.texts.summary}</div></div>
+      <div class="s-dark-card" style="flex: 1; padding-top: var(--ppt-pad-y, 18px); padding-bottom: var(--ppt-pad-y, 18px);"><div class="lab" style="font-size: var(--ppt-ctitle-size, 18px); margin-bottom: var(--ppt-lab-gap, 16px);">整体评价与教学建议</div><div class="content" style="font-size: var(--ppt-body-size, 15px); line-height: var(--ppt-lh, 27px); overflow: hidden; padding-top: 3px;">${state.texts.summary}</div></div>
       
   </div>`);
 
@@ -1775,6 +1840,49 @@ function buildSlideHTML(a, imgs, meta) {
   return slides.join('\n');
 }
 
+/* 上图下文页：按页面「上图 : 下文」比例先分配上下容器高度；上图按原比例尽量填满容器、下文按设置字号尽量展示（超出截断） */
+function adjustVerticalSplits(root){
+  root.querySelectorAll('[data-vsplit]').forEach(area => {
+    const top = area.querySelector('.vsplit-a');
+    const textBox = area.querySelector('.vsplit-text');
+    if (!top || !textBox) return;
+    const avail = area.clientHeight;
+    if (!avail) return;
+    const key = area.dataset.vsplitKey || '';
+    const pct = Math.min(90, Math.max(20, Number((state.pptVSplit || {})[key] ?? 60)));
+    const gap = 12;
+    const topH = Math.max(80, Math.round((avail - gap) * pct / 100));
+    top.style.flex = `0 0 ${topH}px`;
+    top.style.height = topH + 'px';
+    textBox.style.flex = '1 1 auto';
+    textBox.style.minHeight = '0';
+  });
+}
+
+/* 图片元素按自然宽高比设置宽高（不依赖 object-fit，避免导出截图中被拉伸变形），并在槽内水平居中 */
+function sizeChartImages(root){
+  root.querySelectorAll('.slot-a').forEach(box => {
+    const img = box.querySelector('img');
+    if (!img || !img.naturalWidth || !img.naturalHeight) return;
+    const cs = getComputedStyle(box);
+    const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+    const padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+    const cap = box.querySelector('.chart-cap');
+    const capH = cap ? cap.offsetHeight + 8 : 0;
+    const Wc = Math.max(40, box.clientWidth - padX);
+    const Hc = Math.max(40, box.clientHeight - padY - capH);
+    const ratio = img.naturalWidth / img.naturalHeight;
+    const h = Math.min(Wc / ratio, Hc);
+    const w = h * ratio;
+    img.style.width = Math.round(w) + 'px';
+    img.style.height = Math.round(h) + 'px';
+    img.style.maxWidth = 'none';
+    img.style.maxHeight = 'none';
+    img.style.display = 'block';
+    img.style.margin = '0';
+  });
+}
+
 /* ============================================================
  *  溢出内容等比缩放：PPT 固定 1280×720，内容超出可视区域时按比例缩小，避免截图截断
  * ============================================================ */
@@ -1783,12 +1891,14 @@ function fitSlideOverflow(root){
     slide.querySelectorAll('div').forEach(box => {
       if (box.classList.contains('slide')) return;
       if (box.dataset.fitDone) return;
+      if (box.hasAttribute('data-no-fit')) return;
       const st = getComputedStyle(box);
       const clipped = st.overflowY === 'auto' || st.overflowY === 'scroll' || st.overflowY === 'hidden';
       if (!clipped) return;
       if (st.display === 'grid' || st.display === 'flex') return;
-      const avail = box.clientHeight;
-      const need = box.scrollHeight;
+      const padY = (parseFloat(st.paddingTop) || 0) + (parseFloat(st.paddingBottom) || 0) + (parseFloat(st.borderTopWidth) || 0) + (parseFloat(st.borderBottomWidth) || 0);
+      const avail = box.clientHeight - padY;
+      const need = box.scrollHeight - padY;
       if (!avail || need <= avail + 1) return;
       const inner = document.createElement('div');
       inner.className = 'fit-inner';
@@ -1800,13 +1910,34 @@ function fitSlideOverflow(root){
       inner.style.width = (100 / k) + '%';
       for (let i = 0; i < 3; i++){
         const need2 = inner.scrollHeight;
-        const avail2 = box.clientHeight;
-        if (!need2 || !avail2 || need2 * k <= avail2 + 1) break;
-        k = avail2 / need2;
+        if (!need2 || need2 * k <= avail + 1) break;
+        k = avail / need2;
         inner.style.transform = `scale(${k})`;
         inner.style.width = (100 / k) + '%';
       }
     });
+  });
+}
+
+/* 图片版 PPT：若上图内容实际高度小于按比例分配的区域，收窄上部区域，让文字卡上移，消除空白 */
+function collapseShortTopPanels(root){
+  root.querySelectorAll('[data-vsplit]').forEach(area => {
+    const top = area.querySelector('.vsplit-a');
+    const text = area.querySelector('.vsplit-text');
+    if (!top || !text) return;
+    const cs = getComputedStyle(top);
+    const padY = (parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0) + (parseFloat(cs.borderTopWidth) || 0) + (parseFloat(cs.borderBottomWidth) || 0);
+    const children = Array.from(top.children).filter(el => el.getBoundingClientRect().height > 0);
+    if (!children.length) return;
+    const first = children[0].getBoundingClientRect();
+    const last = children[children.length - 1].getBoundingClientRect();
+    const contentH = last.bottom - first.top;
+    const avail = top.clientHeight;
+    const h = Math.max(90, Math.ceil(contentH + padY + 2));
+    if (h < avail - 4){
+      top.style.flex = `0 0 ${h}px`;
+      top.style.height = h + 'px';
+    }
   });
 }
 
@@ -1827,13 +1958,16 @@ async function prepareAll(){
     stage.innerHTML = html;
     await waitImages(stage);
     await sleep(300);
+    adjustVerticalSplits(stage);
+    sizeChartImages(stage);
     fitSlideOverflow(stage);
+    collapseShortTopPanels(stage);
     await sleep(80);
     const slides = Array.from(stage.querySelectorAll('.slide'));
     const slideImages = [];
     for (const slide of slides) {
-        const canvas = await html2canvas(slide, { scale: 2, backgroundColor: slide.classList.contains('slide-cover') ? '#152A28' : (slide.classList.contains('slide-end') ? '#152A28' : '#F4F1E9'), useCORS: true, logging: false, width: 1280, height: 720 });
-        slideImages.push(canvas.toDataURL('image/jpeg', 0.95));
+        const canvas = await html2canvas(slide, { scale: 3, backgroundColor: slide.classList.contains('slide-cover') ? '#152A28' : (slide.classList.contains('slide-end') ? '#152A28' : '#F4F1E9'), useCORS: true, logging: false, width: 1280, height: 720 });
+        slideImages.push(canvas.toDataURL('image/jpeg', 0.98));
         try { canvas.width = 0; canvas.height = 0; } catch(e){}
     }
     stage.innerHTML = '';
@@ -1858,9 +1992,10 @@ async function generateAndDownloadAll(){
   const btn = $('#btnGenerate'), btnPPT = $('#btnPPTOnly');
   const fileName = $('#metaTitle').value.trim() || '学生数学考试';
   const sig = reportMetaSignature();
+  const wasStale = reportStale;
 
-  // 没有任何改动时，直接在手势内同步复用上次结果重新下载（不会被浏览器拦截）
-  if (lastReport && lastReport.analysis === state.analysis && lastReport.sig === sig){
+  // 报告信息 / PPT 内容页设置未改动时，直接在手势内同步复用上次结果重新下载（不会被浏览器拦截）
+  if (lastReport && !reportStale && lastReport.analysis === state.analysis && lastReport.sig === sig){
     releaseReportFileURLs();
     $('#reportWrap').innerHTML = buildDownloadBar(lastReport.fileName, { pdfBlob: lastReport.pdfBlob, pptxBlob: lastReport.pptxBlob, pageCount: lastReport.pageCount }) + lastReport.previewHTML;
     downloadBlob(lastReport.pdfBlob, `${lastReport.fileName}_分析报告.pdf`);
@@ -1872,12 +2007,13 @@ async function generateAndDownloadAll(){
   btn.disabled = true; btnPPT.disabled = true; btn.textContent = '⏳ 正在生成 PDF 与 PPT…';
   // 先清空上一次的大图预览：html2canvas 会克隆整页 DOM，保留旧预览会显著拖慢/拖垮再次生成
   $('#reportWrap').innerHTML = '<div class="report-empty">⏳ 正在生成报告，请稍候…</div>';
-  toast('正在生成报告，请稍候…');
+  toast(wasStale ? '检测到报告信息 / PPT 设置已修改，正在重新生成…' : '正在生成报告，请稍候…');
   try {
     const { pdfBlob, pptxBlob, previewHTML, pageCount } = await prepareAll();
     releaseReportFileURLs();
     $('#reportWrap').innerHTML = buildDownloadBar(fileName, { pdfBlob, pptxBlob, pageCount }) + previewHTML;
     lastReport = { sig, analysis: state.analysis, fileName, pdfBlob, pptxBlob, previewHTML, pageCount };
+    reportStale = false;
     // 自动下载仅在浏览器允许时生效；被拦截也不影响上方「保存」按钮
     try { downloadBlob(pdfBlob, `${fileName}_分析报告.pdf`); } catch(e){ console.error(e); }
     await sleep(450);
@@ -1910,6 +2046,280 @@ async function downloadPPTOnly(){
     toast('生成 PPT 失败：' + ((err && err.message) ? err.message : '请重试'));
   }
   finally { btn.disabled = false; btnPPT.disabled = false; btnPPT.textContent = '📊 仅下载 PPT'; }
+}
+
+/* ============================================================
+ *  可编辑 PPTX：标题、内容标题、正文均为原生文本（可在 PowerPoint 中编辑），图表/表格以图片嵌入
+ * ============================================================ */
+function loadImageAspect(src){
+  return new Promise(res => {
+    const im = new Image();
+    im.onload = () => res(im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : 1.6);
+    im.onerror = () => res(1.6);
+    im.src = src;
+  });
+}
+
+/* 把分析 HTML 转成 PptxGenJS 文本 runs（保留加粗/高亮） */
+function htmlToTextRuns(html, color, boldColor, fontSizePx){
+  const wrap = document.createElement('div');
+  wrap.innerHTML = html || '';
+  const runs = [];
+  const push = (text, bold) => {
+    const t = text.replace(/\s+/g, ' ');
+    if (!t) return;
+    runs.push({ text: t, options: { bold: !!bold, color: bold ? boldColor : color, fontSize: fontSizePx } });
+  };
+  const walk = (node, bold) => {
+    node.childNodes.forEach(n => {
+      if (n.nodeType === 3) push(n.textContent, bold);
+      else if (n.nodeType === 1){
+        const t = n.tagName.toLowerCase();
+        if (t === 'br') runs.push({ text: '', options: { breakLine: true } });
+        else if (t === 'p'){ if (runs.length) runs.push({ text: '', options: { breakLine: true } }); walk(n, bold); }
+        else walk(n, bold || t === 'b' || t === 'strong');
+      }
+    });
+  };
+  walk(wrap, false);
+  return runs;
+}
+
+async function captureBlockPNG(html, widthPx, scaleUp){
+  const host = document.createElement('div');
+  host.style.cssText = `position:absolute;left:-99999px;top:0;width:${widthPx}px;padding:16px;box-sizing:border-box;background:#FFFFFF;font-family:"Microsoft YaHei","PingFang SC",sans-serif;`;
+  host.innerHTML = scaleUp ? `<div class="cap-scale">${html}</div>` : html;
+  document.body.appendChild(host);
+  try {
+    const canvas = await html2canvas(host, { scale: 3, backgroundColor: '#FFFFFF', logging: false });
+    // 裁掉四周纯白边距，避免把空白区域也当成“截图内容”
+    try {
+      const w = canvas.width, h = canvas.height;
+      const data = canvas.getContext('2d').getImageData(0, 0, w, h).data;
+      let minX = w, minY = h, maxX = -1, maxY = -1;
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const i = (y * w + x) * 4;
+          if (data[i] < 247 || data[i + 1] < 247 || data[i + 2] < 247) {
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+      if (maxX >= minX && maxY >= minY) {
+        const pad = 8;
+        minX = Math.max(0, minX - pad); minY = Math.max(0, minY - pad);
+        maxX = Math.min(w - 1, maxX + pad); maxY = Math.min(h - 1, maxY + pad);
+        const cw = maxX - minX + 1, ch = maxY - minY + 1;
+        const out = document.createElement('canvas');
+        out.width = cw; out.height = ch;
+        out.getContext('2d').drawImage(canvas, minX, minY, cw, ch, 0, 0, cw, ch);
+        return { data: out.toDataURL('image/png'), aspect: cw / ch, captured: true };
+      }
+    } catch (e) { /* 裁剪失败则用原图 */ }
+    return { data: canvas.toDataURL('image/png'), aspect: canvas.width / canvas.height, captured: true };
+  } finally { host.remove(); }
+}
+
+async function buildEditablePPTX(a, imgs){
+  const pptx = new PptxGenJS();
+  pptx.layout = 'LAYOUT_16x9';
+  pptx.author = $('#metaAuthor').value.trim() || '数学教研组';
+  pptx.title = $('#metaTitle').value.trim() || '数学考试分析报告';
+  pptx.subject = '数学考试分析报告（可编辑）';
+
+  const BG = 'F4F1E9', DARK = '152A28', CARD = '1B4332', GOLD = 'D4A35A', TXT = '1F2937', MUT = '6B7280', LIGHT = 'EAF2EE', WHITE = 'FFFFFF';
+  const FONT = 'Microsoft YaHei';
+  const U = px => +(px * 10 / 1280).toFixed(4);        // px → 英寸
+  const PT = px => +(px * 10 / 1280 * 72).toFixed(2);  // px → 磅
+  const MX = 64, MT = 48, CONTENT_TOP = 150, CONTENT_H = 720 - CONTENT_TOP - 48;
+
+  const pOf = key => state.pptPages.find(x => x.key === key) || { title: 40, body: 16, ctitle: 18, lh: 27, padY: 18 };
+  const layoutOf = key => ((state.pptLayout && state.pptLayout[key]) === 'v' ? 'v' : 'h');
+
+  const addTitle = (slide, en, cn, p) => {
+    slide.addText(en, { x: U(MX), y: U(MT), w: U(900), h: U(18), fontFace: FONT, fontSize: PT(12), color: MUT, charSpacing: 1 });
+    slide.addText(cn, { x: U(MX), y: U(MT + 20), w: U(1000), h: U(46), fontFace: FONT, fontSize: PT(p.title), bold: true, color: TXT });
+  };
+  const addPanel = (slide, x, y, w, h) => slide.addShape(pptx.ShapeType.roundRect, { x, y, w, h, fill: { color: WHITE }, line: { color: 'E5E0D8' }, rectRadius: 0.04 });
+  const addDarkCard = (slide, x, y, w, h) => slide.addShape(pptx.ShapeType.roundRect, { x, y, w, h, fill: { color: CARD }, line: { color: CARD }, rectRadius: 0.05 });
+  const addCardText = (slide, p, label, bodyHtml, box) => {
+    const padX = U(28), padY = U(p.padY ?? 18);
+    const runs = [{ text: label || '数据分析', options: { bold: true, color: GOLD, fontSize: PT(p.ctitle ?? 18), breakLine: true } }];
+    htmlToTextRuns(bodyHtml, LIGHT, GOLD, PT(p.body ?? 16)).forEach(r => runs.push(r));
+    slide.addText(runs, {
+      x: box.x + padX, y: box.y + padY,
+      w: Math.max(0.25, box.w - padX * 2), h: Math.max(0.25, box.h - padY * 2),
+      fontFace: FONT, fontSize: PT(p.body ?? 16), color: LIGHT,
+      lineSpacing: PT(p.lh ?? 27), valign: 'top', margin: 0
+    });
+  };
+  const placeImage = (slide, data, aspect, area) => {
+    let w = area.w, h = w / aspect;
+    if (h > area.h){ h = area.h; w = h * aspect; }
+    slide.addImage({ data, x: area.x + (area.w - w) / 2, y: area.y + (area.h - h) / 2, w, h });
+  };
+  const placeImageTop = (slide, data, aspect, area) => {
+    let w = area.w, h = w / aspect;
+    if (h > area.h){ h = area.h; w = h * aspect; }
+    slide.addImage({ data, x: area.x + (area.w - w) / 2, y: area.y, w, h });
+  };
+  const panelRect = (area, aspect, pad = 0.12) => {
+    if (!aspect) return area;
+    const innerW = area.w - pad * 2;
+    let h = innerW / aspect + pad * 2;
+    if (h > area.h) h = area.h;
+    return { x: area.x, y: area.y + (area.h - h) / 2, w: area.w, h };
+  };
+  const addContentPage = (key, en, cn, textHtml, visual) => {
+    const p = pOf(key);
+    const slide = pptx.addSlide();
+    slide.background = { color: BG };
+    addTitle(slide, en, cn, p);
+    if (layoutOf(key) === 'v'){
+      const pct = Math.min(90, Math.max(20, Number((state.pptVSplit && state.pptVSplit[key]) ?? 60)));
+      const gap = U(12);
+      const topH = (U(CONTENT_H) - gap) * pct / 100;
+      const topArea = { x: U(MX), y: U(CONTENT_TOP), w: U(1152), h: topH };
+      let usedTopH = topH;
+      if (visual && visual.captured) {
+        /* 截图类内容（表格/卡片）：直接按内容比例放置，不画白色面板；文字卡紧跟在内容下方，避免留下空白 */
+        placeImageTop(slide, visual.data, visual.aspect, topArea);
+        usedTopH = Math.min(topH, topArea.w / visual.aspect);
+      } else {
+        const top = visual ? panelRect(topArea, visual.aspect) : topArea;
+        addPanel(slide, top.x, top.y, top.w, top.h);
+        if (visual) placeImage(slide, visual.data, visual.aspect, { x: top.x + 0.12, y: top.y + 0.12, w: top.w - 0.24, h: top.h - 0.24 });
+      }
+      const card = { x: U(MX), y: topArea.y + usedTopH + gap, w: U(1152), h: U(CONTENT_H) - usedTopH - gap };
+      addDarkCard(slide, card.x, card.y, card.w, card.h);
+      addCardText(slide, p, '数据分析', textHtml, card);
+    } else {
+      const gap = U(24);
+      const usable = U(1152) - gap;
+      const leftW = usable * 0.6, rightW = usable * 0.4;
+      const leftArea = { x: U(MX), y: U(CONTENT_TOP), w: leftW, h: U(CONTENT_H) };
+      if (visual && visual.captured) {
+        placeImageTop(slide, visual.data, visual.aspect, leftArea);
+      } else {
+        const left = visual ? panelRect(leftArea, visual.aspect) : leftArea;
+        addPanel(slide, left.x, left.y, left.w, left.h);
+        if (visual) placeImage(slide, visual.data, visual.aspect, { x: left.x + 0.12, y: left.y + 0.12, w: left.w - 0.24, h: left.h - 0.24 });
+      }
+      const card = { x: U(MX) + leftW + gap, y: U(CONTENT_TOP), w: rightW, h: U(CONTENT_H) };
+      addDarkCard(slide, card.x, card.y, card.w, card.h);
+      addCardText(slide, p, '数据分析', textHtml, card);
+    }
+    return slide;
+  };
+
+  /* 封面 */
+  const meta = {
+    title: $('#metaTitle').value.trim() || '高一年级数学期中质量检测',
+    subTitle: $('#metaSubTitle').value.trim() || '分析报告',
+    author: $('#metaAuthor').value.trim() || '数学教研组'
+  };
+  const cover = pptx.addSlide();
+  cover.background = { color: DARK };
+  cover.addText('MATHEMATICS ASSESSMENT REPORT', { x: U(64), y: U(150), w: U(900), h: U(24), fontFace: FONT, fontSize: PT(12), color: GOLD, charSpacing: 2 });
+  cover.addText([
+    { text: meta.title, options: { breakLine: true } },
+    { text: meta.subTitle, options: { color: GOLD } }
+  ], { x: U(64), y: U(190), w: U(1000), h: U(150), fontFace: FONT, fontSize: PT(56), bold: true, color: WHITE, lineSpacingMultiple: 1.1 });
+  cover.addText(meta.author, { x: U(64), y: U(480), w: U(600), h: U(30), fontFace: FONT, fontSize: PT(16), color: '9CA3AF' });
+  for (let i = 0; i < 11; i++){
+    const hh = 24 + ((i * 17) % 60);
+    cover.addShape(pptx.ShapeType.rect, { x: U(1010 + i * 14), y: U(560) - U(hh), w: U(8), h: U(hh), fill: { color: GOLD, transparency: 25 }, line: { color: GOLD, transparency: 100 } });
+  }
+
+  /* 目录 */
+  const toc = pptx.addSlide();
+  toc.background = { color: BG };
+  addTitle(toc, 'CONTENTS', '目录', pOf('toc'));
+  [['01', '学科总体分析', '核心数据与整体评价'], ['02', '成绩分析', '同比、比率、平均分、分数段与临界生'], ['03', '试卷分析', '大题与小题得分率诊断'], ['04', '总结', '整体评价与教学建议']].forEach((it, i) => {
+    const y = 175 + i * 100;
+    toc.addText(it[0], { x: U(64), y: U(y), w: U(70), h: U(46), fontFace: FONT, fontSize: PT(26), bold: true, color: GOLD });
+    toc.addText(it[1], { x: U(140), y: U(y), w: U(600), h: U(30), fontFace: FONT, fontSize: PT(22), bold: true, color: TXT });
+    toc.addText(it[2], { x: U(140), y: U(y + 32), w: U(900), h: U(26), fontFace: FONT, fontSize: PT(13), color: MUT });
+  });
+
+  /* 内容页图片素材 */
+  const visual = {};
+  /* 截图宽度尽量贴合该页槽位宽度：按 1:1 嵌入，文字不会被缩小 */
+  const capW = key => (layoutOf(key) === 'v' ? 900 : 600);
+  const chartVisual = async id => ({ data: imgs[id], aspect: await loadImageAspect(imgs[id]) });
+  visual.overview = await captureBlockPNG(pptxOverallCards(a), capW('overview'));
+  if (a.indicators.yoy) visual.yoy = await captureBlockPNG(buildYoyTable(a).replace('class="res-table"', 'class="res-table" style="font-size:16px; line-height: 2.5;"'), capW('yoy'));
+  if (a.indicators.rate && imgs.chart_rate) visual.rate = await chartVisual('chart_rate');
+  if (a.indicators.avg && imgs.chart_avg) visual.avg = await chartVisual('chart_avg');
+  if (a.indicators.segment && imgs.chart_dist) visual.dist = await chartVisual('chart_dist');
+  if (a.indicators.segment && imgs.chart_seg_class) visual.seg_class = await chartVisual('chart_seg_class');
+  if (a.indicators.critical) visual.critical = await captureBlockPNG(buildCriticalTables(a, { compact: true }), capW('critical'), true);
+  if (a.typeRates.length && imgs.chart_type) visual.type = await chartVisual('chart_type');
+  if (a.questionRates.length && imgs.chart_q) visual.question = await chartVisual('chart_q');
+
+  /* 内容页（顺序与图片版一致） */
+  addContentPage('overview', 'EXECUTIVE OVERVIEW', '学科总体分析', state.texts.overview, visual.overview);
+  if (a.indicators.yoy) addContentPage('yoy', 'YEAR-ON-YEAR ANALYSIS', '成绩分析 · 同比', state.texts.yoy, visual.yoy);
+  if (a.indicators.rate && imgs.chart_rate) addContentPage('rate', 'RATE ANALYSIS', '成绩分析 · 比率', state.texts.rate, visual.rate);
+  if (a.indicators.avg) addContentPage('avg', 'AVERAGE ANALYSIS', '成绩分析 · 平均分', state.texts.avg, visual.avg);
+  if (a.indicators.segment) addContentPage('dist', 'DISTRIBUTION ANALYSIS', '成绩分析 · 分布', state.texts.segment, visual.dist);
+  if (a.indicators.segment) addContentPage('seg_class', 'CLASS DISTRIBUTION', '成绩分析 · 各班分布', state.texts.seg_class, visual.seg_class);
+  if (a.indicators.critical) addContentPage('critical', 'CRITICAL STUDENTS ANALYSIS', '成绩分析 · 临界生', state.texts.critical, visual.critical);
+  if (a.typeRates.length) addContentPage('type', 'QUESTION TYPE ANALYSIS', '试卷分析 · 大题', state.texts.type, visual.type);
+  if (a.questionRates.length) addContentPage('question', 'QUESTION ANALYSIS', '试卷分析 · 小题', state.texts.q, visual.question);
+
+  /* 总结 */
+  const sum = pptx.addSlide();
+  sum.background = { color: BG };
+  const pS = pOf('summary');
+  addTitle(sum, 'SUMMARY', '总结', pS);
+  const sumCard = { x: U(MX), y: U(CONTENT_TOP), w: U(1152), h: U(CONTENT_H) };
+  addDarkCard(sum, sumCard.x, sumCard.y, sumCard.w, sumCard.h);
+  const sumRuns = [{ text: '整体评价与教学建议', options: { bold: true, color: GOLD, fontSize: PT(pS.ctitle ?? 18), breakLine: true } }];
+  htmlToTextRuns(state.texts.summary, LIGHT, GOLD, PT(pS.body ?? 16)).forEach(r => sumRuns.push(r));
+  sum.addText(sumRuns, {
+    x: sumCard.x + U(28), y: sumCard.y + U(pS.padY ?? 18),
+    w: sumCard.w - U(56), h: sumCard.h - U((pS.padY ?? 18) * 2),
+    fontFace: FONT, fontSize: PT(pS.body ?? 16), color: LIGHT,
+    lineSpacing: PT(pS.lh ?? 27), valign: 'top', margin: 0
+  });
+
+  /* 结束页 */
+  const end = pptx.addSlide();
+  end.background = { color: DARK };
+  end.addShape(pptx.ShapeType.rect, { x: U(600), y: U(180), w: U(80), h: U(80), fill: { color: GOLD } });
+  end.addText('析', { x: U(600), y: U(180), w: U(80), h: U(80), align: 'center', valign: 'middle', fontFace: FONT, fontSize: PT(34), bold: true, color: DARK });
+  end.addText('报告结束', { x: U(0), y: U(300), w: U(1280), h: U(80), align: 'center', fontFace: FONT, fontSize: PT(48), bold: true, color: WHITE });
+  end.addText('感谢您的阅读 · 知析分析引擎', { x: U(0), y: U(400), w: U(1280), h: U(40), align: 'center', fontFace: FONT, fontSize: PT(18), color: '9CA3AF' });
+
+  return pptx;
+}
+
+async function downloadEditablePPT(){
+  if (!state.analysis){ toast('请先在「数据分析」中完成分析'); switchMainTab('analysis'); return; }
+  const btn = $('#btnEditablePPT'), b1 = $('#btnGenerate'), b2 = $('#btnPPTOnly');
+  const fileName = $('#metaTitle').value.trim() || '学生数学考试';
+  const oldText = btn.textContent;
+  btn.disabled = b1.disabled = b2.disabled = true;
+  btn.textContent = '⏳ 正在生成可编辑 PPT…';
+  toast('正在生成可编辑 PPT，请稍候…');
+  try {
+    const a = state.analysis;
+    const imgs = await prepareChartImages(a);
+    const pptx = await buildEditablePPTX(a, imgs);
+    const blob = await pptx.write({ outputType: 'blob' });
+    downloadBlob(blob, `${fileName}_分析报告_可编辑.pptx`);
+    toast('可编辑 PPT 已开始下载 ✓（文字可在 PowerPoint 中直接编辑）');
+  } catch(err){
+    console.error(err);
+    toast('生成可编辑 PPT 失败：' + ((err && err.message) ? err.message : '请重试'));
+  } finally {
+    btn.disabled = b1.disabled = b2.disabled = false;
+    btn.textContent = oldText;
+  }
 }
 
 /* ============================================================
@@ -2018,7 +2428,14 @@ function loadSampleData(){
   toast('示例数据已载入');
 }
 
-function switchMainTab(name){ $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name)); $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + name)); }
+function switchMainTab(name){
+  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + name));
+  if (name === 'analysis'){
+    if (pendingAnalysisRender && state.analysis){ pendingAnalysisRender = false; renderAnalysisView(state.analysis); }
+    setTimeout(() => { Object.keys(state.charts).forEach(id => { try { state.charts[id].resize(); } catch(e){} }); }, 60);
+  }
+}
 function switchSubTab(name){ $$('.subtab').forEach(t => t.classList.toggle('active', t.dataset.sub === name)); $$('.subview').forEach(v => v.classList.toggle('active', v.id === 'sub-' + name)); }
 
 function bindEvents(){
@@ -2063,13 +2480,119 @@ function bindEvents(){
   $('#btnAnalyze').addEventListener('click', runAnalysis);
   $('#btnGenerate').addEventListener('click', generateAndDownloadAll);
   $('#btnPPTOnly').addEventListener('click', downloadPPTOnly);
+  $('#btnEditablePPT').addEventListener('click', downloadEditablePPT);
+}
+
+/* ============================================================
+ *  IndexedDB 持久化：分析设置 + 数据分析内容 + 报告页设置
+ * ============================================================ */
+const DB_NAME = 'mathExamAnalysis';
+const DB_STORE = 'state';
+const DB_KEY = 'snapshot';
+let dbPromise = null, dirty = false, saveTimer = null, pendingAnalysisRender = false;
+
+function openDB(){
+  if (!('indexedDB' in window)) return Promise.reject(new Error('IndexedDB 不可用'));
+  if (!dbPromise){
+    dbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = () => { const db = req.result; if (!db.objectStoreNames.contains(DB_STORE)) db.createObjectStore(DB_STORE); };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+  return dbPromise;
+}
+function idbGet(key){
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const rq = db.transaction(DB_STORE, 'readonly').objectStore(DB_STORE).get(key);
+    rq.onsuccess = () => resolve(rq.result);
+    rq.onerror = () => reject(rq.error);
+  }));
+}
+function idbPut(key, value){
+  return openDB().then(db => new Promise((resolve, reject) => {
+    const tx = db.transaction(DB_STORE, 'readwrite');
+    tx.objectStore(DB_STORE).put(value, key);
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  }));
+}
+function buildSnapshot(){
+  const meta = { title: '', subTitle: '', author: '' };
+  if ($('#metaTitle')) meta.title = $('#metaTitle').value;
+  if ($('#metaSubTitle')) meta.subTitle = $('#metaSubTitle').value;
+  if ($('#metaAuthor')) meta.author = $('#metaAuthor').value;
+  return {
+    version: 2,
+    savedAt: Date.now(),
+    settings: JSON.parse(JSON.stringify(state.settings)),
+    pptPages: JSON.parse(JSON.stringify(state.pptPages)),
+    pptLayout: JSON.parse(JSON.stringify(state.pptLayout)),
+    pptVSplit: JSON.parse(JSON.stringify(state.pptVSplit)),
+    texts: JSON.parse(JSON.stringify(state.texts || {})),
+    analysis: state.analysis ? JSON.parse(JSON.stringify(state.analysis)) : null,
+    meta
+  };
+}
+function markDirty(){ dirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(flushSave, 1200); }
+function flushSave(){
+  if (!dirty || !('indexedDB' in window)) return;
+  dirty = false;
+  try { idbPut(DB_KEY, buildSnapshot()).catch(err => console.warn('[持久化] 写入失败', err)); }
+  catch(err){ console.warn('[持久化] 序列化失败', err); }
+}
+async function restoreSnapshot(){
+  if (!('indexedDB' in window)) return false;
+  try {
+    const snap = await idbGet(DB_KEY);
+    if (!snap) return false;
+    if (snap.settings) state.settings = Object.assign({}, state.settings, snap.settings);
+    if (Array.isArray(snap.pptPages) && snap.pptPages.length) state.pptPages = snap.pptPages.map(p => {
+      const page = Object.assign({ ctitle: 18, lh: 27, padY: 18, labGap: 16 }, p);
+      if (page.lh <= 3) page.lh = Math.round((page.body || 16) * page.lh); // 旧版行距为倍数，转为 px
+      return page;
+    });
+    if (snap.pptLayout) state.pptLayout = Object.assign({}, state.pptLayout, snap.pptLayout);
+    if (snap.pptVSplit) state.pptVSplit = Object.assign({}, state.pptVSplit, snap.pptVSplit);
+    if (snap.meta){
+      if ($('#metaTitle') && snap.meta.title) $('#metaTitle').value = snap.meta.title;
+      if ($('#metaSubTitle') && snap.meta.subTitle) $('#metaSubTitle').value = snap.meta.subTitle;
+      if ($('#metaAuthor') && snap.meta.author) $('#metaAuthor').value = snap.meta.author;
+    }
+    renderLinesConfig(); renderSegmentsConfig(); renderCriticalSegmentsConfig();
+    renderCriticalDisplayConfig(); renderOverallMetricsConfig(); renderRateMetricsConfig();
+    renderIndicatorsConfig(); renderPptFontConfig();
+    if (snap.analysis){
+      state.analysis = snap.analysis;
+      state.texts = snap.analysis.texts || snap.texts || {};
+      /* 分析页可能处于隐藏状态，先挂起渲染，切换到「数据分析」时再绘制（保证图表尺寸正确） */
+      pendingAnalysisRender = true;
+    } else if (snap.texts){
+      state.texts = snap.texts;
+    }
+    return true;
+  } catch(err){ console.warn('[持久化] 读取失败', err); return false; }
 }
 
 function init(){
   renderLinesConfig(); renderSegmentsConfig(); renderCriticalSegmentsConfig();
   renderCriticalDisplayConfig(); renderOverallMetricsConfig(); renderRateMetricsConfig();
   renderIndicatorsConfig(); renderPptFontConfig();
-  bindEvents(); loadSampleData();
+  bindEvents();
+  document.addEventListener('input', markDirty, true);
+  document.addEventListener('change', markDirty, true);
+  document.addEventListener('click', markDirty, true);
+  window.addEventListener('pagehide', flushSave);
+  const reportView = $('#view-report');
+  if (reportView){
+    reportView.addEventListener('input', () => invalidateReportCache('报告信息已修改，点击生成将重新生成报告'), true);
+    reportView.addEventListener('change', () => invalidateReportCache('报告信息 / PPT 设置已修改，点击生成将重新生成报告'), true);
+  }
+  restoreSnapshot().then(restored => {
+    if (!restored) loadSampleData();
+    else renderAllDataTables();
+  });
 }
 init();
 </script>
